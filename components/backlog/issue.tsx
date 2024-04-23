@@ -78,7 +78,6 @@ const Issue: React.FC<{
               >
                 <MdEdit className="text-sm" />
               </Button>
-              {isEpic(issue.parent) ? <EpicName issue={issue.parent} /> : null}
             </div>
           </div>
           <IssueContextMenu isEditing={isEditing} className="flex-auto">

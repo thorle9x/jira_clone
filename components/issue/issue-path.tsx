@@ -57,10 +57,6 @@ const ParentContainer: React.FC<{
   }
   return (
     <div className="flex gap-x-3">
-      <div className="flex items-center">
-        {children}
-        <IssueLink issue={issue.parent} setIssueKey={setIssueKey} />
-      </div>
       <div className="relative flex items-center">
         <IssueSelectType
           key={issue.id + issue.type}
