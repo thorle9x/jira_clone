@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 const TopNavbar: React.FC = () => {
   const { user } = useUser();
   const [url] = useFullURL();
-  const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -38,28 +37,13 @@ const TopNavbar: React.FC = () => {
         />
         <span className="text-sm font-medium text-gray-600">Jira Clone</span>
         <Button
-          href="https://github.com/sebastianfdz/jira_clone"
+          href="https://github.com/thorle9x/jira_clone"
           target="_blank"
           className="ml-3 flex gap-x-2"
         >
           <AiFillGithub />
           <span className="text-sm font-medium">Github Repo</span>
         </Button>
-        {stars ? (
-          <Button
-            href="https://github.com/sebastianfdz/jira_clone"
-            target="_blank"
-            customColors
-            className="ml-3 flex gap-x-2 bg-black"
-          >
-            <AiFillGithub className="text-white" />
-            <span className=" text-sm font-medium text-white">Star</span>
-            <div className="flex items-center pr-1.5 text-sm font-medium text-white">
-              <span className="pr-1">{stars}</span>
-              <AiFillStar className="text-yellow-300" />
-            </div>
-          </Button>
-        ) : null}
       </div>
       {user ? (
         <div className="flex items-center gap-x-2">

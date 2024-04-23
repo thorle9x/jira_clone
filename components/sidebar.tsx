@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { BacklogIcon, BoardIcon, DevelopmentIcon, RoadmapIcon } from "./svgs";
+import { BacklogIcon, BoardIcon } from "./svgs";
 import {
   NavigationMenu,
   NavigationMenuLink,
@@ -22,12 +22,6 @@ const Sidebar: React.FC = () => {
   const { project } = useProject();
   const planningItems = [
     {
-      id: "roadmap",
-      label: "Roadmap",
-      icon: RoadmapIcon,
-      href: `/project/roadmap`,
-    },
-    {
       id: "backlog",
       label: "Backlog",
       icon: BacklogIcon,
@@ -41,14 +35,6 @@ const Sidebar: React.FC = () => {
     },
   ];
 
-  const developmentItems = [
-    {
-      id: "development",
-      label: "Development",
-      icon: DevelopmentIcon,
-      href: `/project/`,
-    },
-  ];
   return (
     <div className="flex h-full w-64 flex-col gap-y-5 bg-gray-50 p-3 shadow-inner">
       <div className="my-5 flex items-center gap-x-2 px-3">
@@ -63,7 +49,6 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
       <NavList label={"PLANNING"} items={planningItems} />
-      <NavList label={"DEVELOPMENT"} items={developmentItems} />
     </div>
   );
 };
@@ -86,11 +71,7 @@ const NavList: React.FC<{ items: NavItemType[]; label: string }> = ({
       >
         <NavigationMenuList>
           {items.map((item) => (
-            <NavItem
-              key={item.id}
-              item={item}
-              disabled={label === "DEVELOPMENT"}
-            />
+            <NavItem key={item.id} item={item} />
           ))}
         </NavigationMenuList>
       </NavigationMenu>
@@ -117,19 +98,8 @@ const NavListHeader: React.FC<{
 
 const NavItem: React.FC<{ item: NavItemType; disabled?: boolean }> = ({
   item,
-  disabled = false,
 }) => {
   const currentPath = usePathname();
-  if (disabled) {
-    return (
-      <div className="w-full rounded-lg text-gray-600 hover:cursor-not-allowed">
-        <div className="flex w-full items-center gap-x-3 border-l-4 border-transparent px-2 py-2">
-          <item.icon />
-          <span className="text-sm">{item.label}</span>
-        </div>
-      </div>
-    );
-  }
   return (
     <Link
       href={item.href}
