@@ -1,11 +1,8 @@
 import React, { Fragment, useRef, useState } from "react";
-import { NotImplemented } from "@/components/not-implemented";
-import { LightningIcon } from "@/components/svgs";
 import { IssueTitle } from "../../issue-title";
 import { IssueSelectStatus } from "../../issue-select-status";
 import { useSelectedIssueContext } from "@/context/use-selected-issue-context";
 import { type IssueType } from "@/utils/types";
-import { Button } from "@/components/ui/button";
 import { Comments } from "./issue-details-info-comments";
 import { IssueMetaInfo } from "./issue-details-info-meta";
 import { Description } from "./issue-details-info-description";
@@ -69,9 +66,9 @@ const SmallIssueDetailsInfo = React.forwardRef<
         </h1>
       </div>
 
-      <IssueDetailsInfoActions
+      {/* <IssueDetailsInfoActions
         onAddChildIssue={() => setIsAddingChildIssue(true)}
-      />
+      /> */}
       <div className="relative flex items-center gap-x-3">
         <IssueSelectStatus
           key={issue.id + issue.status}
@@ -79,14 +76,6 @@ const SmallIssueDetailsInfo = React.forwardRef<
           issueId={issue.id}
           variant="lg"
         />
-        <NotImplemented>
-          <Button customColors className="hover:bg-gray-200">
-            <div className="flex items-center">
-              <LightningIcon className="mt-0.5" />
-              <span>Actions</span>
-            </div>
-          </Button>
-        </NotImplemented>
       </div>
       <Description issue={issue} key={String(issueKey) + issue.id} />
       {hasChildren(issue) || isAddingChildIssue ? (
@@ -143,10 +132,6 @@ const LargeIssueDetails = React.forwardRef<
             />
           </h1>
         </div>
-        <IssueDetailsInfoActions
-          onAddChildIssue={() => setIsAddingChildIssue(true)}
-          variant={"lg"}
-        />
         <Description issue={issue} key={String(issueKey) + issue.id} />
         {hasChildren(issue) || isAddingChildIssue ? (
           <ChildIssueList
@@ -168,14 +153,6 @@ const LargeIssueDetails = React.forwardRef<
             issueId={issue.id}
             variant="lg"
           />
-          <NotImplemented>
-            <Button customColors className="hover:bg-gray-200">
-              <div className="flex items-center">
-                <LightningIcon className="mt-0.5" />
-                <span>Actions</span>
-              </div>
-            </Button>
-          </NotImplemented>
         </div>
 
         <IssueDetailsInfoAccordion issue={issue} />

@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Sebastian Fernandez",
-      url: "https://sebastianfdz.com",
+      name: "Thong Le",
+      url: "https://www.linkedin.com/in/thongld90/",
     },
   ],
-  creator: "Sebastian Fernandez",
+  creator: "Thong Le",
   openGraph: {
     type: "website",
     locale: "en_US",

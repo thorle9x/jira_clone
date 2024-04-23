@@ -4,7 +4,6 @@ import { FaChevronDown } from "react-icons/fa";
 import clsx from "clsx";
 import { type IssueStatus } from "@prisma/client";
 import { type IssueType } from "@/utils/types";
-import { NotImplemented } from "@/components/not-implemented";
 import { capitalizeMany } from "@/utils/helpers";
 import {
   Select,
@@ -143,11 +142,6 @@ const IssueSelectStatus: React.FC<{
                 ))}
               </SelectGroup>
               <SelectSeparator className="mt-2 h-[1px] bg-gray-300" />
-              <NotImplemented feature="workflow">
-                <button className="w-full border py-4 pl-5 text-left text-sm font-medium hover:cursor-default hover:bg-gray-100">
-                  View Workflow
-                </button>
-              </NotImplemented>
             </SelectViewport>
           </SelectContent>
         </SelectPortal>

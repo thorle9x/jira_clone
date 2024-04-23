@@ -59,26 +59,6 @@ const BacklogIcon: React.FC<{ className?: string; size?: number }> = ({
     </svg>
   );
 };
-const RoadmapIcon: React.FC<{ className?: string; size?: number }> = ({
-  className,
-  size,
-}) => {
-  return (
-    <svg
-      className={className}
-      width={size ?? 24}
-      height={size ?? 24}
-      viewBox="0 0 24 24"
-      role="presentation"
-    >
-      <path
-        d="M6 2h10a3 3 0 010 6H6a3 3 0 110-6zm0 2a1 1 0 100 2h10a1 1 0 000-2H6zm4 5h8a3 3 0 010 6h-8a3 3 0 010-6zm0 2a1 1 0 000 2h8a1 1 0 000-2h-8zm-4 5h6a3 3 0 010 6H6a3 3 0 010-6zm0 2a1 1 0 000 2h6a1 1 0 000-2H6z"
-        fill="currentColor"
-        fillRule="evenodd"
-      ></path>
-    </svg>
-  );
-};
 
 const LightningIcon: React.FC<{ className?: string; size?: number }> = ({
   className,
@@ -477,7 +457,6 @@ export {
   ChildrenTreeIcon,
   BacklogIcon,
   BoardIcon,
-  RoadmapIcon,
   LightningIcon,
   DevelopmentIcon,
   SprintTrophy,

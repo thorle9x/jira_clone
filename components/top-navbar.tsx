@@ -10,22 +10,6 @@ const TopNavbar: React.FC = () => {
   const { user } = useUser();
   const [url] = useFullURL();
 
-  useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetchStars();
-  }, []);
-
-  async function fetchStars() {
-    const response = await fetch(
-      "https://api.github.com/repos/sebastianfdz/jira_clone"
-    );
-    if (!response.ok) {
-      setStars(null);
-      return;
-    }
-    const data = (await response.json()) as { stargazers_count: number };
-    setStars(data.stargazers_count ?? null);
-  }
   return (
     <div className="flex h-12 w-full items-center justify-between border-b px-4">
       <div className="flex items-center gap-x-2">
@@ -35,7 +19,7 @@ const TopNavbar: React.FC = () => {
           width={25}
           height={25}
         />
-        <span className="text-sm font-medium text-gray-600">Jira Clone</span>
+        <span className="text-sm font-medium text-gray-600">Jira Simple</span>
         <Button
           href="https://github.com/thorle9x/jira_clone"
           target="_blank"

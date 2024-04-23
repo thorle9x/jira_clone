@@ -2,11 +2,8 @@
 import { Button } from "../ui/button";
 import { IssueSelectType } from "./issue-select-type";
 import { type IssueType } from "@/utils/types";
-import { IssueSelectEpic } from "./issue-select-epic";
 import { toast } from "../toast";
 import { IssueIcon } from "./issue-icon";
-import { AiOutlinePlus } from "react-icons/ai";
-import { isEpic } from "@/utils/helpers";
 import { type ReactNode } from "react";
 import { useIssues } from "@/hooks/query-hooks/use-issues";
 import { TooltipWrapper } from "../ui/tooltip";
@@ -16,31 +13,6 @@ const IssuePath: React.FC<{
   issue: IssueType;
   setIssueKey: React.Dispatch<React.SetStateAction<string | null>>;
 }> = ({ issue, setIssueKey }) => {
-  if (isEpic(issue))
-    return (
-      <div className="flex items-center">
-        <IssueIcon issueType={issue.type} />
-        <TooltipWrapper text={`${issue.key}: ${issue.name}`} side="top">
-          <Button
-            onClick={() => setIssueKey(issue.key)}
-            customColors
-            className=" bg-transparent text-xs text-gray-500 underline-offset-2 hover:underline"
-          >
-            <span className="whitespace-nowrap">{issue.key}</span>
-          </Button>
-        </TooltipWrapper>
-      </div>
-    );
-
-  if (issue.parent && isEpic(issue.parent))
-    return (
-      <ParentContainer issue={issue} setIssueKey={setIssueKey}>
-        <IssueSelectEpic issue={issue} key={issue.id}>
-          <IssueIcon issueType={issue.parent.type} />
-        </IssueSelectEpic>
-      </ParentContainer>
-    );
-
   if (issue.parent)
     return (
       <ParentContainer issue={issue} setIssueKey={setIssueKey}>
@@ -50,9 +22,7 @@ const IssuePath: React.FC<{
 
   return (
     <ParentContainer issue={issue} setIssueKey={setIssueKey}>
-      <IssueSelectEpic issue={issue}>
-        <AddEpic />
-      </IssueSelectEpic>
+      <></>
     </ParentContainer>
   );
 };
@@ -91,7 +61,6 @@ const ParentContainer: React.FC<{
         {children}
         <IssueLink issue={issue.parent} setIssueKey={setIssueKey} />
       </div>
-      <span className="py-1.5 text-gray-500">/</span>
       <div className="relative flex items-center">
         <IssueSelectType
           key={issue.id + issue.type}
@@ -121,15 +90,6 @@ const IssueLink: React.FC<{
         <span className="whitespace-nowrap">{issue?.key}</span>
       </Button>
     </TooltipWrapper>
-  );
-};
-
-const AddEpic: React.FC = () => {
-  return (
-    <div className="flex items-center font-normal text-gray-500">
-      <AiOutlinePlus className="text-sm" />
-      <span>Add Epic</span>
-    </div>
   );
 };
 
